@@ -1,0 +1,249 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <style>
+      p {
+        margin-top: 10px;
+        margin-bottom: 0;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(rgba(255, 165, 0, 0.4), rgba(0, 0, 0, 0.3));
+      }
+
+      button {
+        background-color: rgb(255, 195, 82);
+        border: none;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        height: 36px;
+        width: 36px;
+        margin-right: 4px;
+        transition: transform 0.15s ease;
+        cursor: pointer;
+      }
+
+      button:hover {
+        transform: scale(1.1);
+      }
+
+      button:active {
+        transform: scale(0.9);
+      }
+
+      .main-calculator {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 2px solid orange;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        padding: 10px 10px;
+        border-radius: 10px;
+        background-color: rgb(243, 243, 243);
+      }
+
+      #my-div {
+        width: 100%;
+        min-height: 36px;
+        padding: 5px 5px;
+        background-color: white;
+        box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.6);
+        font-size: 18px;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: right;
+        border: none;
+        border-radius: 4px;
+        resize: none;
+        box-sizing: border-box;
+        outline: none;
+        text-align: left;
+        color: black;
+      }
+
+      .equal {
+        background: rgb(255, 195, 82);
+        transition: transform 0.15s, background 0.15s ease;
+        transition-delay: 0s, 1s;
+      }
+
+      .equal:active {
+        transform: scale(0.9);
+        background: rgb(26, 194, 0);
+        transition-delay: 0s, 0s;
+      }
+
+      .operator {
+        background-color: rgb(255, 109, 5);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-calculator">
+      <textarea id="my-div" readonly> </textarea>
+      <div>
+        <p>
+          <button
+            onclick="
+              result += '1';
+            "
+          >
+            1
+          </button>
+          <button
+            onclick="
+              result += '2';
+            "
+          >
+            2
+          </button>
+          <button
+            onclick="
+              result += '3';
+            "
+          >
+            3
+          </button>
+          <button
+            class="operator"
+            onclick="
+              result += ' + ';
+            "
+          >
+            +
+          </button>
+        </p>
+      </div>
+      <div>
+        <p>
+          <button
+            onclick="
+              result += '4';
+            "
+          >
+            4
+          </button>
+          <button
+            onclick="
+              result += '5';
+            "
+          >
+            5
+          </button>
+          <button
+            onclick="
+              result += '6';
+            "
+          >
+            6
+          </button>
+          <button
+            class="operator"
+            onclick="
+              result += ' - ';
+            "
+          >
+            -
+          </button>
+        </p>
+      </div>
+      <div>
+        <p>
+          <button
+            onclick="
+              result += '7';
+            "
+          >
+            7
+          </button>
+          <button
+            onclick="
+              result += '8';
+            "
+          >
+            8
+          </button>
+          <button
+            onclick="
+              result += '9';
+            "
+          >
+            9
+          </button>
+          <button
+            class="operator"
+            onclick="
+              result += ' * ';
+            "
+          >
+            *
+          </button>
+        </p>
+      </div>
+      <div>
+        <p>
+          <button
+            onclick="
+              result += '0';
+            "
+          >
+            0
+          </button>
+          <button
+            onclick="
+              result += '.';
+            "
+          >
+            .
+          </button>
+          <button
+            class="equal"
+            onclick="
+              result = +eval(result).toFixed(7);
+            "
+          >
+            =
+          </button>
+          <button
+            class="operator"
+            onclick="
+              result += '/';
+            "
+          >
+            /
+          </button>
+        </p>
+      </div>
+      <button
+        style="
+          width: fit-content;
+          margin-top: 10px;
+          background-color: lightcoral;
+          font-size: 16px;
+          font-weight: 500;
+        "
+        onclick="
+          result = '';
+        "
+      >
+        Clear
+      </button>
+    </div>
+    <script>
+      let result = "";
+
+      const allButtons = document.querySelectorAll("button");
+
+      allButtons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+          document.getElementById("my-div").textContent = result;
+        });
+      });
+    </script>
+  </body>
+</html>
